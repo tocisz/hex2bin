@@ -14,7 +14,7 @@ MAN_DIR ?= /usr/man/man1
 endif
 
 
-SFLAGS = -static -static-libgcc -static-libstdc++
+SFLAGS = -fcommon -static -static-libgcc -static-libstdc++
 # If you want a statically linked executable, insclude the flags above:
 CPFLAGS = -std=c99 -O2 -Wall -pedantic $(SFLAGS)
 
@@ -40,10 +40,10 @@ hex2bin.1: hex2bin.pod
 	pod2man hex2bin.pod > hex2bin.1
 
 hex2bin: hex2bin.o common.o libcrc.o binary.o
-	gcc -O2 -Wall -o hex2bin hex2bin.o common.o libcrc.o binary.o
+	gcc -fcommon -O2 -Wall -o hex2bin hex2bin.o common.o libcrc.o binary.o
 
 mot2bin: mot2bin.o common.o libcrc.o binary.o
-	gcc -O2 -Wall -o mot2bin mot2bin.o common.o libcrc.o binary.o
+	gcc -fcommon -O2 -Wall -o mot2bin mot2bin.o common.o libcrc.o binary.o
 
 windows:
 #	$(WIN32_GCC) $(CPFLAGS) -o Win32/hex2bin.exe hex2bin.c common.c libcrc.c binary.c
