@@ -56,8 +56,7 @@ windows:
 install:
 	strip hex2bin
 	strip mot2bin
-	cp hex2bin mot2bin $(INSTALL_DIR)/bin
-	cp hex2bin.1 $(MAN_DIR)
+	zip hex2bin.zip hex2bin mot2bin
 
 clean:
-	rm core *.o hex2bin mot2bin hex2bin.exe mot2bin.exe
+	rm core *.o hex2bin mot2bin hex2bin.zip

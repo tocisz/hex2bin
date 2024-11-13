@@ -12,13 +12,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Build
-      run: make hex2bin
-
-    - name: Zip
-      if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        strip hex2bin
-        zip hex2bin hex2bin
+      run: make install
 
     - name: Release
       uses: softprops/action-gh-release@v2
