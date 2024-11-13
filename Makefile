@@ -53,7 +53,7 @@ windows:
 	$(WIN_STRIP) Win64/hex2bin.exe
 	$(WIN_STRIP) Win64/mot2bin.exe
 
-install:
+install: hex2bin mot2bin
 	strip hex2bin
 	strip mot2bin
 	zip hex2bin.zip hex2bin mot2bin
