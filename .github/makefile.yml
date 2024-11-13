@@ -1,0 +1,28 @@
+name: Make and release
+
+on:
+  push
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build
+      run: make hex2bin
+
+    - name: Zip
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        strip hex2bin
+        zip hex2bin hex2bin
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          hex2bin.zip
